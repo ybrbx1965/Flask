@@ -1,0 +1,15 @@
+﻿@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == "GET":
+        return render_template('register.html')
+    elif request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        tele = request.form['telephone']
+        st = str(email)+' '+str(password)+' '+ str(tele)
+
+        lp_file = open('static/logins-parols/lp.txt', 'a')
+        lp_file.write('\n')
+        print(lp_file.write(st))
+        lp_file.close()
+        return '1'
